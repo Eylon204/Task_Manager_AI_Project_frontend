@@ -1,0 +1,9 @@
+<div class="calendar-container">
+    <h2>Calendar</h2>
+    <div **ngFor="let event of events">
+        <p>
+            <strong>{{event.title}}</strong>
+            <span>{{event.start | date: 'short'}}</span>
+        </p>
+    </div>
+</div>

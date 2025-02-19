@@ -1,0 +1,25 @@
+.calendar-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #eef2ff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  
+    h2 {
+      color: #444;
+    }
+  
+    div {
+      background: white;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 4px;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    }
+  
+    strong {
+      color: #007bff;
+    }
+  }
