@@ -1,11 +1,33 @@
-<mat-toolbar color="primary">
-  <span>Dashboard</span>
-  <span class="spacer"></span>
-  <button mat-button color="warn" (click)="logout()">Logout</button>
-</mat-toolbar>
+<div class="dashboard-container">
+  <!-- upper menu -->
+  <mat-toolbar color="primary">
+    <span>Task Manager</span>
+    <span class="spacer"></span>
+    <button mat-button (click)="logout()">Logout</button>
+  </mat-toolbar>
 
-<mat-card>
-  <mat-card-content>
-    <p>Welcome to your task manager!</p>
-  </mat-card-content>
-</mat-card>
+  <!-- list of tasks -->
+  <div class="tasks-container">
+    <mat-grid-list cols="2" rowHeight="1:1">
+      <mat-grid-tile *ngFor="let task of tasks" class="task-tile">
+        <mat-card class="task-card">
+          <mat-card-title>{{ task.title }}</mat-card-title>
+          <mat-card-content>{{ task.description }}</mat-card-content>
+          <mat-card-actions>
+            <button mat-icon-button color="warn" (click)="deleteTask(task.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button color="accent" (click)="editTask(task)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <!-- Messsage if no tasks -->
+  <div *ngIf="tasks.length === 0" class="empty-message">
+    <p>📌 No tasks available. Add new tasks to get started!</p>
+  </div>
+</div>

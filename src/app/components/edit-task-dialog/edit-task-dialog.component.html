@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Edit Task</h2>
+<div mat-dialog-content>
+  <form [formGroup]="editTaskForm">
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-button color="primary" (click)="save()" [disabled]="editTaskForm.invalid">Save</button>
+</div>

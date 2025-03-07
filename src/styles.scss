@@ -1,4 +1,77 @@
-/* You can add global styles to this file, and also import other style files */
+/* 🎨 Dark Mode */
+.dark-mode {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* 🔲 כרטיס הכניסה */
+.dark-mode .login-card {
+  background: #1e1e1e !important;
+  border: 1px solid #333;
+  color: white;
+}
+
+/* 📝 שדות טופס */
+.dark-mode mat-form-field {
+  background: #2c2c2c;
+  border-radius: 8px;
+}
+
+.dark-mode input {
+  background: #333 !important;
+  color: white !important;
+  border: 1px solid #ffffff !important;
+}
+
+/* 🔘 כפתור התחברות */
+.dark-mode .login-button {
+  background: #6200ea !important;
+  color: white !important;
+}
+
+.dark-mode .login-button:hover {
+  background: #4500b5 !important;
+}
+
+/* 🎴 Sidebar */
+.dark-mode mat-sidenav {
+  background: #1c1c1c !important;
+  color: white !important;
+}
+
+.dark-mode mat-nav-list a {
+  color: white !important;
+}
+
+.dark-mode mat-nav-list a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.toggle-sidebar-btn,
+.theme-switch {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #6200ea !important;
+  color: white !important;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  z-index: 3000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.theme-switch {
+  top: 20px;
+  right: 20px;
+}
+
+.toggle-sidebar-btn {
+  top: 20px;
+  left: 20px;
+}

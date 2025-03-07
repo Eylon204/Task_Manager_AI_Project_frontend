@@ -1,9 +1,38 @@
 <div class="calendar-container">
-    <h2>Calendar</h2>
-    <div **ngFor="let event of events">
-        <p>
-            <strong>{{event.title}}</strong>
-            <span>{{event.start | date: 'short'}}</span>
-        </p>
-    </div>
+  <!-- menu -->
+  <mat-toolbar color="primary">
+    <span>📅 Task Calendar</span>
+    <span class="spacer"></span>
+  </mat-toolbar>
+
+  <!-- calendar -->
+  <div class="calendar-wrapper">
+    <mat-card>
+      <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+    </mat-card>
+  </div>
+
+  <!-- add new event -->
+  <div class="event-actions">
+    <button mat-raised-button color="primary" (click)="addNewEvent()">      ➕ Add Event
+    </button>
+  </div>
+
+  <!-- list of events -->
+  <div *ngIf="events.length > 0" class="event-list">
+    <mat-card>
+      <mat-card-title>📌 Upcoming Events</mat-card-title>
+      <mat-list>
+        <mat-list-item *ngFor="let event of events">
+          <span class="event-title">{{ event.title }} - {{ event.date | date }}</span>
+          <button (click)="deleteEvent(event.id!)">Delete</button>
+        </mat-list-item>
+      </mat-list>
+    </mat-card>
+  </div>
+
+  <!-- if no events get message -->
+  <div *ngIf="events.length === 0" class="empty-message">
+    <p>📌 No events scheduled. Add events to start planning!</p>
+  </div>
 </div>

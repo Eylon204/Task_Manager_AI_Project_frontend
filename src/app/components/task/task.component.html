@@ -1,15 +1,22 @@
-<div class="atsk-container">
-    <h2>Taks List</h2>
-    <form>
-        <input type="text" placeholder="New task title">
-        <button type="submit">Add Task</button>
-    </form>
+<ng-container *ngIf="tasks.length > 0; else noTasks">
+  <div class="task-list">
+    <div *ngFor="let task of tasks; trackBy: trackByTaskId" class="task-card">
+      <h3>{{ task.title }}</h3>
+      <p *ngIf="task.description">{{ task.description }}</p>
+      <p>Priority: <strong>{{ task.priority }}</strong></p>
+      <p *ngIf="task.due_date">Due Date: {{ task.due_date | date : "short" }}</p>
 
-    <ul>
-        <li **ngFor="let task of tasks">
-            <span>{{task.title}}</span>
-            <button (click)="editTask(task)">Edit</button>
-            <button (click)="deleteTask(task.id)">Delete</button>
-        </li>
-    </ul>
-</div>
+      <div class="task-actions">
+        <button (click)="toggleTaskCompletion(task)" class="task-btn">
+          {{ task.status === "completed" ? "🔄 Undo" : "✅ Complete" }}
+        </button>
+        <button (click)="editTask(task.id!)" class="edit-btn">✏️ Edit</button>
+        <button (click)="deleteTask(task.id!)">🗑 Delete</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #noTasks>
+  <p class="no-tasks">📭 No tasks available. Start by adding a new task!</p>
+</ng-template>

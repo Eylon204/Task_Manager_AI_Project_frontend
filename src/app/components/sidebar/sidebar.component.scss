@@ -1,0 +1,49 @@
+.sidebar {
+  width: 260px;
+  background: #1c1c1c !important;
+  color: white !important;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+/* ווידוא שהתוכן יישאר תקין */
+mat-sidenav-content {
+  transition: margin-left 0.3s ease-in-out;
+  padding: 20px;
+}
+
+/* כשהסיידבר פתוח */
+.sidebar-container mat-sidenav-content {
+  margin-left: 260px;
+}
+
+/* כשהסיידבר סגור */
+.sidebar-container.mat-drawer-content {
+  margin-left: 0 !important;
+  justify-content: center;
+}
+/* 🎯 ווידוא שהכפתור צמוד לסיידבר */
+.toggle-sidebar-btn {
+  position: fixed;
+  top: 20px;
+  left: 270px; /* הזזה כך שלא יכסה את הטקסט */
+  width: 50px;
+  height: 50px;
+  background: #6200ea;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: left 0.3s ease;
+  z-index: 2000;
+}
+
+/* 🏠 כשהסיידבר סגור - הכפתור חוזר לשמאל */
+.sidebar.closed + .toggle-sidebar-btn {
+  left: 20px;
+}

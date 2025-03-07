@@ -1,12 +1,72 @@
-.dashboard-card {
-  max-width: 600px;
-  margin: auto;
-  text-align: center;
+/* 🎨 צבעים מותאמים אישית */
+:host {
+  --primary-color: #6200ea;
+  --secondary-color: #03dac6;
+  --background-color: #f5f5f5;
+  --card-background: #ffffff;
+  --button-color: #ff4081;
+  --text-color: #333;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--background-color);
   padding: 20px;
 }
 
-mat-card-actions {
+/* 🎴 עיצוב כרטיסי המשימות */
+.tasks-container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   margin-top: 20px;
+}
+
+.task-card {
+  background: var(--card-background);
+  padding: 16px;
+  margin: 12px;
+  width: 350px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* 🖱️ כפתורי עריכה ומחיקה */
+.mat-icon-button {
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+.mat-icon-button:hover {
+  color: red;
+}
+
+/* 🔘 כותרת */
+h2 {
+  color: var(--text-color);
+  font-size: 24px;
+  text-align: center;
+}
+
+/* 📌 הודעה כשאין משימות */
+.empty-message {
+  text-align: center;
+  margin-top: 20px;
+  color: #777;
+  font-size: 18px;
+}
+
+/* 🌀 אנימציה */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

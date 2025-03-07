@@ -1,20 +1,27 @@
-<mat-card class="auth-card">
-  <mat-card-title>Login</mat-card-title>
-  <mat-card-content>
-    <form [formGroup]="loginForm!" (ngSubmit)="onSubmit()">
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" type="email" required>
-      </mat-form-field>
+<div class="login-container">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">  <!-- ✅ שינוי מ-username ל-email -->
+      <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+        Please enter a valid email
+      </mat-error>
+    </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput formControlName="password" type="password" required>
-      </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+        Password must be at least 6 characters
+      </mat-error>
+    </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm?.invalid">
-        Login
-      </button>
-    </form>
-  </mat-card-content>
-</mat-card>
+    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid || isLoading">
+      <span *ngIf="isLoading">Loading...</span>
+      <span *ngIf="!isLoading">Login</span>
+    </button>
+
+  </form>
+</div>
